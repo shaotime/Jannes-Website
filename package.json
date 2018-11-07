@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.4.0",
     "bootstrap": "^3.3.7",
     "google-map-react": "^1.0.9",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
+    "react-contenteditable": "^3.1.1",
     "react-dom": "^16.5.2",
     "react-image-gallery": "^0.8.12",
     "react-images-upload": "^1.2.3",

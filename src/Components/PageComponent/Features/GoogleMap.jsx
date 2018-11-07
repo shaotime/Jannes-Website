@@ -17,7 +17,7 @@ class GoogleMap extends Component {
       // Important! Always set the container height explicitly
       <div style={{ height: '50vh', width: '80%', margin: '0 auto'}}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key:""}}
+          bootstrapURLKeys={{ key:""}} //insert google api map key here
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
