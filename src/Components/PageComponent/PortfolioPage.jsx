@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./css/PortfolioPage.css";
-import PictureGallery from "./Features/PictureGallery";
-import PictureUploader from "./Features/PictureUploader";
+import PictureGallery from "./Features/PortfolioFeatures/PictureGallery";
+import PictureUploader from "./Features/PortfolioFeatures/PictureUploader";
 
 class PortfolioPage extends Component {
   render() {

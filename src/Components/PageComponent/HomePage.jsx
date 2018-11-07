@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EditableDescription from "./Features/EditableDescription";
+import EditableDescription from "./Features/HomeFeatures/EditableDescription";
 import "./css/HomePage.css";
 
 class HomePage extends Component {

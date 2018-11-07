@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./css/ContactsPage.css";
-import GoogleMap from "./Features/GoogleMap";
-import ContactForm from "./Features/ContactForm";
+import GoogleMap from "./Features/ContactsFeatures/GoogleMap";
+import ContactForm from "./Features/ContactsFeatures/ContactForm";
 
 class ContactsPage extends Component {
 
