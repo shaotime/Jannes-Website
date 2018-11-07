@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import TextField from "@material-ui/core/TextField";
 import ContentEditable from 'react-contenteditable';
+import "./EditableDescription.css";
 
 class EditableDescription extends Component {
   constructor(props){
     super(props);
     this.state = {
       mode: 'view',
-      html: "<b>Hello <i>World</i></b>",
+      html: "Type your description here",
       disabled: true
     };
     this.editStuff = this.editStuff.bind(this);
@@ -51,7 +52,7 @@ renderButtons() {
       return (
         <div className="buttonList">
             <button style={{margin:1}} onClick={this.saveStuff} className='defaultBtn'>Save</button>
-            <button style={{margin:1}} onClick={this.goBack} className='defaultBtn'>Discard Changes</button>
+            <button style={{margin:1, visibility: "hidden"}} onClick={this.goBack} className='defaultBtn'>Discard Changes</button>
         </div>
       )
     else {
@@ -63,15 +64,18 @@ renderButtons() {
     }
   }
 
-  render() {
+  render() { //possible to add sanitazion if needed for security reasons
       return (
           <div>
               <div>
                   <h3>Below you can edit and save your description!</h3>
-                  <ContentEditable html={this.state.html}
-                                    disabled={this.state.disabled}
-                                    onChange={this.handleChange}
-                                    tagName='article'/>
+                      <div className="editableContainer">
+                        <textarea  className="editable"  //textarea was previously ContentEditable, box looks weird though when too many words in it
+                                          html={this.state.html}
+                                          disabled={this.state.disabled}
+                                          onChange={this.handleChange}
+                                          tagName='description'/>
+                      </div>
                   {this.renderButtons()}
               </div>
           </div>
