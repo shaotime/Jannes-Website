@@ -1,12 +1,16 @@
 .editable {
   font-family: sans-serif;
   width: 75%;
-  min-height: 100px;
+  min-height: 200px;
   min-width: 400px;
-  border: 1px dashed #aaa;
+  border: 0px dashed #aaa;
   padding: 5px;
 }
 
 .editableContainer{
   padding: 20px;
+}
+
+textarea{
+  resize: none;
 }

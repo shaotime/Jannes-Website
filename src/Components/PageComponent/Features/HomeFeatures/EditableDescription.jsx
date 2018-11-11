@@ -9,6 +9,7 @@ class EditableDescription extends Component {
     this.state = {
       mode: 'view',
       html: "Type your description here",
+      value: "",
       disabled: true
     };
     this.editStuff = this.editStuff.bind(this);
@@ -18,11 +19,12 @@ class EditableDescription extends Component {
   }
 
   editStuff(){
-    //TODO: save a temporary state of old html, if goBack() is called, then change html to old html instead of new one
+    //TODO: save a temporary state of old state.value, if goBack() is called, then change html to old html instead of new one
     this.setState({
       mode: 'edit',
       disabled: false
     });
+    document.getElementById('description').style.border = '1px dashed #aaa';
 
   }
 
@@ -31,10 +33,11 @@ class EditableDescription extends Component {
       mode: 'view',
       disabled: true
     });
+    document.getElementById('description').style.border = '0px dashed #aaa';
 
   }
 
-  goBack(){
+  goBack(){ //currently disabled until editStuff TODO is finished
     this.setState({
       mode: 'view',
       disabled: true
@@ -43,7 +46,10 @@ class EditableDescription extends Component {
   }
 
   handleChange(evt){
-     this.setState({html: evt.target.value});
+     this.setState({
+       html: evt.target.value,
+       value: evt.target.value
+     });
   }
 
 
@@ -51,14 +57,14 @@ renderButtons() {
     if (this.state.mode === 'edit')
       return (
         <div className="buttonList">
-            <button style={{margin:1}} onClick={this.saveStuff} className='defaultBtn'>Save</button>
-            <button style={{margin:1, visibility: "hidden"}} onClick={this.goBack} className='defaultBtn'>Discard Changes</button>
+            <button style={{margin:1}} onClick={this.saveStuff} className='btn btn-success'>Save</button>
+            <button style={{margin:1, visibility: "hidden"}} onClick={this.goBack} className='btn btn-danger'>Discard Changes</button>
         </div>
       )
     else {
       return (
          <div className="buttonList">
-            <button onClick={this.editStuff} className='defaultBtn'>Edit</button>
+            <button onClick={this.editStuff} className='btn btn-default'>Edit</button>
           </div>
        )
     }
@@ -70,11 +76,13 @@ renderButtons() {
               <div>
                   <h3>Below you can edit and save your description!</h3>
                       <div className="editableContainer">
-                        <textarea  className="editable"  //textarea was previously ContentEditable, box looks weird though when too many words in it
-                                          html={this.state.html}
+                        <textarea id="description" className="editable"  //textarea was previously ContentEditable, box looks weird though when too many words in it
+                                          //html={this.state.html} <--part of ContextEditable component
+                                          placeholder="Type some stuff here"
+                                          value={this.state.value} //part of textarea component
                                           disabled={this.state.disabled}
                                           onChange={this.handleChange}
-                                          tagName='description'/>
+                                          />
                       </div>
                   {this.renderButtons()}
               </div>
