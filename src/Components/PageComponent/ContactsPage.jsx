@@ -13,6 +13,7 @@ class ContactsPage extends Component {
           <p>Kontaktuppgifter med ett kontaktformulär och en karta med Jannes kontor utpekad</p>
           <ContactForm />
           <br/>
+          <h2> This is where my office is located: </h2>
           <GoogleMap />
         </div>
       </div>

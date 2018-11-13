@@ -46,8 +46,8 @@ class ContactForm extends Component{
         <div>
         <textarea className="form-control" rows="4" cols="50" name="textValue" value={this.state.textValue} onChange={this.handleChange} />
         </div>
-        <br />
-        <input type="submit" value="Submit" />
+        <br/>
+        <input className="btn btn-success" type="submit" value="Submit" />
       </form>
     );
   }

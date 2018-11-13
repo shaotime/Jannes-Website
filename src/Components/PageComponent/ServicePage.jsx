@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ServiceTable from "./Features/ServiceFeatures/ServiceTable";
 import "./css/ServicePage.css";
 
 class ServicePage extends Component {
@@ -6,8 +7,7 @@ class ServicePage extends Component {
     return (
       <div className="Service">
         <div className="lander">
-          <h1>Service</h1>
-          <p>This is the servicepage</p>
+          <ServiceTable />
         </div>
       </div>
     )
