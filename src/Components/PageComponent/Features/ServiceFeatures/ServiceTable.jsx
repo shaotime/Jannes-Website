@@ -24,15 +24,19 @@ class ServiceTable extends Component {
               accessor: "id"
             },
             {
-              Header: "Name",
+              Header: "Service Name",
               accessor: "name"
             },
             {
               Header: 'Description',
               accessor: "description"
+            },
+            {
+              Header: 'Price',
+              accessor: "price"
             }
           ]}
-          defaultPageSize={10}
+          defaultPageSize={5}
           className="-striped -highlight"
         />
       </div>

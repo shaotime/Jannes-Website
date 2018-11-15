@@ -4,16 +4,79 @@
   {
     "id": 1,
     "name": "Name of item 1",
-    "description": "Description of item 1 and stuff"
+    "description": "Description of item 1 and stuff",
+    "price": 10
   },
   {
     "id": 2,
     "name": "Name of item 2",
-    "description": "Description of item 2 and stuff"
+    "description": "Description of item 2 and stuff",
+    "price": 20
   },
   {
     "id": 3,
     "name": "Name of item 3",
-    "description": "Description of item 3 and stuff"
+    "description": "Description of item 3 and stuff",
+    "price": 30
+  },
+  {
+    "id": 4,
+    "name": "Name of item 4",
+    "description": "Description of item 4 and stuff",
+    "price": 40
+  },
+  {
+    "id": 5,
+    "name": "Name of item 5",
+    "description": "Description of item 5 and stuff",
+    "price": 50
+  },
+  {
+    "id": 6,
+    "name": "Name of item 6",
+    "description": "Description of item 6 and stuff",
+    "price": 60
+  },
+  {
+    "id": 7,
+    "name": "Name of item 7",
+    "description": "Description of item 7 and stuff",
+    "price": 70
+  },
+  {
+    "id": 8,
+    "name": "Name of item 8",
+    "description": "Description of item 8 and stuff",
+    "price": 80
+  },
+  {
+    "id": 9,
+    "name": "Name of item 9",
+    "description": "Description of item 9 and stuff",
+    "price": 90
+  },
+  {
+    "id": 10,
+    "name": "Name of item 10",
+    "description": "Description of item 10 and stuff",
+    "price": 100
+  },
+  {
+    "id": 11,
+    "name": "Name of item 11",
+    "description": "Description of item 11 and stuff",
+    "price": 110
+  },
+  {
+    "id": 12,
+    "name": "Name of item 12",
+    "description": "Description of item 12 and stuff",
+    "price": 120
+  },
+  {
+    "id": 13,
+    "name": "Name of item 13",
+    "description": "Description of item 13 and stuff",
+    "price": 130
   }
 ]
