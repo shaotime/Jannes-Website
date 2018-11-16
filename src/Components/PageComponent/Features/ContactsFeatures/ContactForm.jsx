@@ -21,11 +21,13 @@ class ContactForm extends Component{
   }
 
   handleSubmit(event) {
-    alert('Thank you ' + this.state.nameValue);
+    let tempN = this.state.nameValue;
+    let tempT = this.state.textValue;
     this.setState({
       nameValue: '',
       textValue: ''
     });
+    alert('Thank you ' + tempN + ' for your message: ' + tempT); //why does the alert happen and finish before the previous command??? i.e. look at behaviour in the website, alert shows first THEN it clears the inputs...???
     event.preventDefault();
 
   }

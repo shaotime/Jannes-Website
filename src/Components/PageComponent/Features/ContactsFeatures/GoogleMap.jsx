@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Marker = ({ text }) => <div>{text}</div>;
+const kontor = {
+  lat: 57.689880,
+  lng: 11.978530
+};
 
 class GoogleMap extends Component {
   static defaultProps = {
-    center: {
-      lat: 57.70,
-      lng: 11.97
-    },
-    zoom: 11
+    center: kontor,
+    zoom: 16
   };
+
+  renderMarkers(map, maps) {
+    let marker = new maps.Marker({
+      position: kontor,
+      map: map,
+      title: 'Jannes Kontor' //hover over to see
+    });
+  }
 
   render() {
     return (
@@ -20,11 +29,13 @@ class GoogleMap extends Component {
           bootstrapURLKeys={{ key:""}} //insert google api map key here
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+          yesIWantToUseGoogleMapApiInternals
         >
-          <AnyReactComponent
-            lat={57.708870}
-            lng={11.974560}
-            text={'Jannes Kontor'} //this is where Jannes kontor should be
+          <Marker
+            lat={57.689880}
+            lng={11.978530}
+            text={'Jannes Kontor'} //text of where Jannes kontor should be
           />
         </GoogleMapReact>
       </div>
