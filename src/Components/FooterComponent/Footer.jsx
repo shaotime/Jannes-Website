@@ -4,8 +4,8 @@ import "./Footer.css";
 class Footer extends Component {
   render() {
     return (
-      <footer>
-          Footer components lol
+      <footer className="footer">
+        <p> &copy; Footer Components 2018 </p>
       </footer>
     )
   }

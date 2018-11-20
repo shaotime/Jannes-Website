@@ -33,7 +33,7 @@ class EditableDescription extends Component {
       mode: 'view',
       disabled: true
     });
-    document.getElementById('description').style.border = '0px dashed #aaa';
+    document.getElementById('description').style.border = '2px solid #aaa';
 
   }
 
@@ -78,7 +78,7 @@ renderButtons() {
                       <div className="editableContainer">
                         <textarea id="description" className="editable"  //textarea was previously ContentEditable, box looks weird though when too many words in it
                                           //html={this.state.html} <--part of ContextEditable component
-                                          placeholder="Type some stuff here"
+                                          placeholder="Press the Edit button below to edit text"
                                           value={this.state.value} //part of textarea component
                                           disabled={this.state.disabled}
                                           onChange={this.handleChange}

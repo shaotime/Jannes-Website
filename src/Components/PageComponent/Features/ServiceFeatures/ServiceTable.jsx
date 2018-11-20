@@ -61,16 +61,16 @@ class ServiceTable extends Component {
                   <div className="form-group">
                     <div className="row">
                       <div className="col-md-2">
-                        <input id="id" type="text" className="form-control" placeholder="ID" />
+                        <input id="id" type="text" className="form-control" placeholder="ID" required />
                       </div>
                       <div className="col-md-3">
-                        <input id="serviceName" type="text" className="form-control" placeholder="Service Name" />
+                        <input id="serviceName" type="text" className="form-control" placeholder="Service Name" required />
                       </div>
                       <div className="col-md-5">
-                        <input id="description" type="text" className="form-control" placeholder="Description" />
+                        <input id="description" type="text" className="form-control" placeholder="Description" required />
                       </div>
                       <div className="col-md-2">
-                        <input id="price" type="text" className="form-control" placeholder="Price" />
+                        <input id="price" type="text" className="form-control" placeholder="Price" required />
                       </div>
                     </div>
                   </div>
@@ -95,7 +95,7 @@ class ServiceTable extends Component {
                   close()
                 }}
               >
-                close modal
+                Close Modal
               </button>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditableDescription from "./Features/HomeFeatures/EditableDescription";
+import NewsFeed from "./Features/HomeFeatures/NewsFeed";
 import "./css/HomePage.css";
 
 class HomePage extends Component {
@@ -9,17 +10,16 @@ class HomePage extends Component {
       <div className="Home">
         <div className="lander">
           <h1>HomePage</h1>
-            <p>This is the homepage</p>
-            <div style={{textAlign: 'center'}}>
-              <EditableDescription />
-            </div>
-            <br/>
-            <div style={{textAlign: 'center'}} className="newsFeed">
-              News Feed
-            </div>
-
-
+          <p>This is the homepage</p>
+          <div style={{textAlign: 'center'}}>
+            <EditableDescription />
+          </div>
+          <br/>
+          <div style={{textAlign: 'center'}} className="newsFeed">
+            News Feed
+          </div>
         </div>
+        <NewsFeed />
       </div>
     )
   }
