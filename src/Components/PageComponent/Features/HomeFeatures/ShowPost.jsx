@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+//this file should hold? and show all the posts basically
+
+const axios = require('axios');
 
 class ShowPost extends Component {
 
