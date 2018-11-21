@@ -5,7 +5,10 @@
   "proxy": "http://localhost:5000/",
   "dependencies": {
     "@material-ui/core": "^3.5.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "bootstrap": "^3.3.7",
+    "express": "^4.16.4",
     "google-map-react": "^1.1.0",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
@@ -16,18 +19,18 @@
     "react-scripts": "1.1.5",
     "react-table": "^6.8.6",
     "reactjs-popup": "^1.3.1",
-    "reactstrap": "^6.5.0",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "reactstrap": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start\""
   },
   "devDependencies": {
     "react-image-resizer": "^1.3.0",
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.1.0"
   }
 }
