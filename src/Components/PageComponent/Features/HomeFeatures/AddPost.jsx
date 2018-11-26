@@ -17,17 +17,9 @@ class AddPost extends Component {
     }
 
     componentDidMount() {
-      this.callApi()
-        .then(res => this.setState({ response: res.express }))
-        .catch(err => console.log(err));
+
     }
 
-    callApi = async () => {
-      const response = await fetch('/api/hello');
-      const body = await response.json();
-      if (response.status !== 200) throw Error(body.message);
-      return body;
-    };
 
     handleTitleChange(e){
       this.setState({title:e.target.value});
@@ -39,17 +31,18 @@ class AddPost extends Component {
 
     handleSubmit(e){
       e.preventDefault();
-      axios.post('/addpost', {
+      axios.post('/addPost', {
         title: this.state.title,
         subject: this.state.subject
       })
       .then(function (response) {
         console.log('response from add post is ',response);
-        
+
       })
       .catch(function (error) {
         console.log(error);
       });
+      window.location.reload();
     }
 
     render() {

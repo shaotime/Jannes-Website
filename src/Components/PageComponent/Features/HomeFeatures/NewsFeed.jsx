@@ -31,7 +31,7 @@ class NewsFeed extends Component {
           </Popup></li>
           </ul>
           </nav>
-          
+
           <h3 className="text-muted">Latest News</h3>
         </div>
 
