@@ -9,6 +9,7 @@ class AddPost extends Component {
         response:"", //what is this?
         title: "",
         subject: "",
+      //  id: "",
         responseToSubject: ""
       };
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,11 +36,11 @@ class AddPost extends Component {
         title: this.state.title,
         subject: this.state.subject
       })
-      .then(function (response) {
+      .then( (response) => {
         console.log('response from add post is ',response);
-
+        //this.setState({id:response.insertId});
       })
-      .catch(function (error) {
+      .catch( (error) => {
         console.log(error);
       });
       window.location.reload();

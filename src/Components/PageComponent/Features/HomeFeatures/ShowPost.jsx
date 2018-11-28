@@ -12,6 +12,7 @@ class ShowPost extends Component {
       };
       this.getPosts = this.getPosts.bind(this);
       this.setState = this.setState.bind(this);
+      this.deletePost = this.deletePost.bind(this);
     }
 
   componentWillMount(){
@@ -19,35 +20,47 @@ class ShowPost extends Component {
   }
 
   getPosts() {
-    let kek = this;
+    let self = this;
     axios.get('/getPost')
     .then((response) => {
-      kek.setState({posts:response.data})
-      console.log("SHOWPOST POSTS: " + kek.state.posts);
-      console.log("SHOWPOST POSTS: " + kek.state.posts);
+      self.setState({posts:response.data})
+      console.log("SHOWPOST POSTS: " + self.state.posts);
       for (var i in response.data) {
         console.log(response.data[i]);
       }
     })
     .catch((error) => {
       console.log('error is ',error);
-    })
-    .then(()=> {
-      console.log("SHOWPOST POSTS2: " + this.state.posts);
     });
   }
+
+  deletePost(index){
+    console.log("I N D E X:");
+    console.log(this.state.posts[index].id);
+
+    axios.delete('/deletePost/'+ this.state.posts[index].id)
+     .then((response)=>{
+       console.log("deleted");
+       this.getPosts();
+
+     })
+     .catch((error) => {
+       console.log(error);
+     });
+  }
+
 
   render(){
     return (
       <React.Fragment>
-        <h1> </h1>
-          <div className="list-group">
+          <div style={{display: "flex", flexDirection: "column-reverse"}} className="list-group">
           {
-            this.state.posts.map(function(post,index) {
-              return <a href="#" key={index} className="list-group-item active">
+            this.state.posts.map((post,index) => {
+              return <div key={index} className="list-group-item active">
               <h4 className="list-group-item-heading">{post.Title}</h4>
               <p className="list-group-item-text">{post.Subject}</p>
-              </a>
+              <button onClick={this.deletePost.bind(this, index)} > Delete </button>
+              </div>
             })
           }
           </div>
