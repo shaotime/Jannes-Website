@@ -59,7 +59,7 @@ class ShowPost extends Component {
               return <div key={index} className="list-group-item active">
               <h4 className="list-group-item-heading">{post.Title}</h4>
               <p className="list-group-item-text">{post.Subject}</p>
-              <button onClick={this.deletePost.bind(this, index)} > Delete </button>
+              <button className="btn btn-danger pull-right" onClick={this.deletePost.bind(this, index)} > Delete </button>
               </div>
             })
           }

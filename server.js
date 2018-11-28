@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/getPost', (req, res) => {
-
   connection.query('SELECT * FROM posts', (error, results) => {
     if(error) throw error;
     res.send(results);
@@ -23,7 +22,6 @@ app.get('/getPost', (req, res) => {
       console.log(results[i]);
     }
   });
-
 });
 
 app.post('/addPost', (req, res, next) => {
@@ -48,6 +46,24 @@ app.delete('/deletePost/:id', (req, res) => {
     console.log('Post deleted: ', req.params.id);
   })
 
+});
+
+app.post('/addDescription', (req, res) => {
+  const description = {value: req.body.value, id: 1};
+  connection.query('REPLACE INTO descrip SET ?', description, (error,results) =>{
+    if(error) throw error;
+    res.send(results);
+    console.log("Description added:" + results);
+  });
+
+});
+
+app.get('/getDescription', (req, res) => {
+  connection.query('SELECT * FROM descrip', (error, results) => {
+    if(error) throw error;
+    res.send(results);
+    console.log("Current Description: " + results);
+  });
 });
 
 

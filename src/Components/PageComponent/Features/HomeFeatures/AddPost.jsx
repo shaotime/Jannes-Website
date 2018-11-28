@@ -59,7 +59,7 @@ class AddPost extends Component {
                 </div>
 
                 <div className="form-group">
-                  <textarea type="textarea" onChange={this.handleSubjectChange} className="form-control" id="subject" placeholder="Subject" maxLength="140" rows="7"></textarea>
+                  <textarea type="textarea" onChange={this.handleSubjectChange} className="form-control" id="subject" placeholder="Subject" maxLength="65535" rows="10"></textarea>
                 </div>
 
               <input type="submit" id="submit" name="submit" className="btn btn-primary pull-right" value="Add Post"/>

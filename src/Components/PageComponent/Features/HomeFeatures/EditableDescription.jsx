@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from "@material-ui/core/TextField";
 import ContentEditable from 'react-contenteditable';
 import "./EditableDescription.css";
+const axios = require('axios');
 
 class EditableDescription extends Component {
   constructor(props){
@@ -16,6 +17,7 @@ class EditableDescription extends Component {
     this.saveStuff = this.saveStuff.bind(this);
     this.goBack = this.goBack.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.getDescription = this.getDescription.bind(this);
   }
 
   editStuff(){
@@ -28,6 +30,10 @@ class EditableDescription extends Component {
 
   }
 
+  componentDidMount(){
+      this.getDescription();
+  }
+
   saveStuff(){
     this.setState({
       mode: 'view',
@@ -35,6 +41,16 @@ class EditableDescription extends Component {
     });
     document.getElementById('description').style.border = '2px solid #aaa';
 
+    axios.post('/addDescription', {
+      value: this.state.value
+    })
+    .then( (response) => {
+      console.log('response from add description is ',response);
+    })
+    .catch( (error) => {
+      console.log(error);
+    });
+  //  window.location.reload();
   }
 
   goBack(){ //currently disabled until editStuff TODO is finished
@@ -50,6 +66,20 @@ class EditableDescription extends Component {
        html: evt.target.value,
        value: evt.target.value
      });
+  }
+
+  getDescription(){
+    let self = this;
+    axios.get('/getDescription')
+    .then((response) => {
+      console.log("DESCRIPTION: " + self.state.value);
+      console.log("RESPONSE:", response.data[0]);
+      self.setState({value:response.data[0].value});
+      console.log("DESCRIPTION: " + self.state.value);
+    })
+    .catch((error) => {
+      console.log('error is ',error);
+    });
   }
 
 

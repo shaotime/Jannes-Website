@@ -16,7 +16,7 @@ class HomePage extends Component {
           </div>
           <br/>
           <div style={{textAlign: 'center'}} className="newsFeed">
-            News Feed
+            
           </div>
         </div>
         <NewsFeed />
