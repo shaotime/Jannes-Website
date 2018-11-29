@@ -3,16 +3,22 @@ import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import Popup from "reactjs-popup";
 import "./Modal.css";
+import AddService from "./AddService";
+const axios = require('axios');
 
 class ServiceTable extends Component {
 
   constructor(props){
     super(props);
-    var customData = require('./DummyItems.json');
     this.state={
-      data: customData
+      data: []
     };
     this.renderEditable = this.renderEditable.bind(this);
+    this.getServices = this.getServices.bind(this);
+  }
+
+  componentWillMount(){
+    this.getServices();
   }
 
   renderEditable(cellInfo) { //currently not using this much directly, wanted to make an "Edit Row" or "Edit Table" button/function
@@ -37,8 +43,34 @@ class ServiceTable extends Component {
     const index = this.state.data.findIndex(data => {
       return data.id === id
     })
-    this.state.data.splice(index, 1);
-    this.setState({data: this.state.data});
+    axios.delete('/deleteService/'+ this.state.data[index].id)
+     .then((response)=>{
+       console.log("deleted");
+       this.state.data.splice(index, 1);
+       this.setState({data: this.state.data});
+       this.getServices();
+     })
+     .catch((error) => {
+       console.log(error);
+     });
+
+
+
+  }
+
+  getServices(){
+    let self = this;
+    axios.get('/getServices')
+    .then((response) => {
+      self.setState({data: response.data})
+      console.log("SHOW SERVICES: " + self.state.data);
+      for (var i in response.data) {
+        console.log(response.data[i]);
+      }
+    })
+    .catch((error) => {
+      console.log('error is ',error);
+    });
   }
 
   render() {
@@ -46,63 +78,7 @@ class ServiceTable extends Component {
     return(
       <React.Fragment>
       <div>
-
-        <Popup trigger={<button className="btn btn-default pull-right"> Add New Item</button>} modal>
-
-            {close => (
-          <div className="moodal">
-            <a className="close" onClick={close}>
-              &times;
-            </a>
-            <div className="header"> Add New Item </div>
-            <div className="content">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="form-group">
-                    <div className="row">
-                      <div className="col-md-2">
-                        <input id="id" type="text" className="form-control" placeholder="ID" required />
-                      </div>
-                      <div className="col-md-3">
-                        <input id="serviceName" type="text" className="form-control" placeholder="Service Name" required />
-                      </div>
-                      <div className="col-md-5">
-                        <input id="description" type="text" className="form-control" placeholder="Description" required />
-                      </div>
-                      <div className="col-md-2">
-                        <input id="price" type="text" className="form-control" placeholder="Price" required />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="actions">
-              <Popup
-                trigger={<button style={{margin:"4px"}} className="btn btn-default"> Trigger </button>}
-                position="top center"
-                closeOnDocumentClick
-              >
-                <span>
-                  TODO: Add this as a string to DummyItems.json object (parse needed?)
-                </span>
-              </Popup>
-              <button
-                className="btn btn-default"
-                style={{margin:"4px"}}
-                onClick={() => {
-                  console.log('modal closed ')
-                  close()
-                }}
-              >
-                Close Modal
-              </button>
-            </div>
-          </div>
-        )}
-
-        </Popup>
-
+        <AddService />
       </div>
 
       <br />
@@ -121,20 +97,21 @@ class ServiceTable extends Component {
                 Header: "Service Name",
                 accessor: "name",
                 minWidth: 100,
-                Cell: this.renderEditable
+                filterable: true
+              //  Cell: this.renderEditable
               },
               {
                 Header: 'Description',
                 accessor: "description",
                 minWidth: 150,
                 sortable: false,
-                Cell: this.renderEditable
+              //  Cell: this.renderEditable
               },
               {
                 Header: 'Price',
                 accessor: "price",
                 minWidth: 50,
-                Cell: this.renderEditable
+              //  Cell: this.renderEditable
               },
               {
                 Header: 'Actions',

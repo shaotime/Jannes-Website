@@ -25,11 +25,9 @@ app.get('/getPost', (req, res) => {
 });
 
 app.post('/addPost', (req, res, next) => {
-
   const post = { title: req.body.title, subject: req.body.subject };
   var queryString = 'INSERT INTO posts SET ?';
   console.log(post);
-
   connection.query(queryString, post, (error, results) =>{
     if(error) throw error;
     res.send(results);
@@ -66,6 +64,38 @@ app.get('/getDescription', (req, res) => {
   });
 });
 
+app.post('/addService', (req, res, next) => {
+  const service = {id:req.body.id, name:req.body.name, description: req.body.description, price: req.body.price};
+  var queryString = 'INSERT IGNORE INTO service SET ?';
+  console.log(service);
+  connection.query(queryString, service, (error, results) =>{
+    if(error) throw error;
+    res.send(results);
+    console.log('Last insert service:', results);
+
+  });
+});
+
+app.get('/getServices', (req, res) => {
+  connection.query('SELECT * FROM service', (error, results) => {
+    if(error) throw error;
+    res.send(results);
+    console.log("Current Services: " + results);
+    for (var i in results) {
+      console.log(results[i]);
+    }
+  });
+});
+
+app.delete('/deleteService/:id', (req, res) => {
+  console.log('Service about to be deleted: ', req.params.id);
+  connection.query('DELETE FROM service WHERE id = ?', [req.params.id], (error,results) => {
+    if(error) throw error;
+    res.send(results);
+    console.log('Service deleted: ', req.params.id);
+  })
+
+});
 
 
 

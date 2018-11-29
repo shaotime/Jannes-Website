@@ -10,13 +10,13 @@ class HomePage extends Component {
       <div className="Home">
         <div className="lander">
           <h1>HomePage</h1>
-          <p>This is the homepage</p>
+          <p>Ska innehålla en kort presentation och ett nyhetsflöde </p>
           <div style={{textAlign: 'center'}}>
             <EditableDescription />
           </div>
           <br/>
           <div style={{textAlign: 'center'}} className="newsFeed">
-            
+
           </div>
         </div>
         <NewsFeed />
