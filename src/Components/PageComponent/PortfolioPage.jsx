@@ -10,7 +10,6 @@ class PortfolioPage extends Component {
         <div className="lander">
           <h1>Portfolio</h1>
           <p>Ett bildgalleri där Janne kan ladda upp bilder från tidigare uppdrag</p>
-          <PictureGallery />
           <b/>
           <PictureUploader />
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
 import Image from 'react-image-resizer';
+import axios from "axios";
 import Pic1 from './RandomPictures/pic1.png';
 import Pic2 from './RandomPictures/pic2.png';
 import Pic3 from './RandomPictures/pic3.png';
@@ -26,6 +27,8 @@ class PictureGallery extends Component {
         showVideo: {},
       };
 }
+
+
 
   render() {
     const images = [ //dummy pictures in here right now, TODO: connect uploader
