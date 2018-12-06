@@ -28,23 +28,8 @@ class PictureGallery extends Component {
       };
 }
 
-
-
   render() {
-    const images = [ //dummy pictures in here right now, TODO: connect uploader
-      {
-        original: Pic1
-      },
-      {
-        original: Pic2
-      },
-      {
-        original: Pic3
-      },
-      {
-        original: Pic4
-      }
-    ]
+    const images = this.props.firebasePictures;
 
     return (
       <ImageGallery items={images} />

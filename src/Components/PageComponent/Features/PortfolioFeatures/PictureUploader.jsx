@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import ImageUploader from 'react-images-upload';
 import axios from "axios";
+import Pic1 from './RandomPictures/pic1.png';
+import PictureGallery from "./PictureGallery";
+
+
+
+
 class PictureUploader extends Component {
+
 
     constructor(props) {
         super(props);
-         this.state = { pictures: [] };
+         this.state = {
+           pictures: [],
+           firebasePictures: []
+         };
          this.onDrop = this.onDrop.bind(this);
          this.uploadToServer = this.uploadToServer.bind(this);
          this.kevin = this.kevin.bind(this);
+         this.makeIntoLinks = this.makeIntoLinks.bind(this);
+
     }
 
     onDrop(picture) {
@@ -38,22 +50,36 @@ class PictureUploader extends Component {
     kevin(){
       axios.get("https://us-central1-jannesdb-d93d2.cloudfunctions.net/getFile").then((res)=>{
         console.log("RESULTS!");
-        console.log(res.data[0]);
-        for (var i in res.data[0]) {
-          console.log("names: " + res.data[0][i].name);
-          //files.name[i] = result[i].name;
-          
-          }
+        console.log("result: "+JSON.stringify(res.data));
+        this.makeIntoLinks(res.data);
       })
       .catch((error)=>{
         console.log("error:" + error);
       });
     }
 
+    makeIntoLinks(array){
+      var tempfinalURLarray = [];
+      for(const item of array){
+
+        const finalURL = "https://firebasestorage.googleapis.com/v0/b/jannesdb-d93d2.appspot.com/o/"+ item.name +"?alt=media&token=" + item.url;
+        console.log(finalURL);
+
+        tempfinalURLarray.push({original: finalURL});
+      }
+      this.setState({firebasePictures: tempfinalURLarray});
+      console.log(this.state.firebasePictures);
+    }
+
+    componentWillMount(){
+      this.kevin();
+    }
+
     render() {
-      const { pictures } = this.state;
+      const { pictures } = this.state.pictures;
         return (
           <React.Fragment>
+            <PictureGallery firebasePictures={this.state.firebasePictures} />
             <ImageUploader
                 withIcon={true}
                 buttonText='Choose image'

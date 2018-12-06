@@ -5,6 +5,7 @@ const spawn = require("child-process-promise").spawn;
 const cors = require("cors")({ origin: true });
 const Busboy = require("busboy");
 const fs = require("fs");
+const makeDir = require("make-dir");
 
 var admin = require("firebase-admin");
 
@@ -43,35 +44,77 @@ exports.getFile = functions.https.onRequest((req, res) => {
       });
     }
 
-    console.log("first step");
-
     const storage = admin.storage();
     const bucket = admin.storage().bucket();
-    console.log("bucket created");
-    console.log("bucket: "+bucket.id);
-
+    const file = bucket.file("pikachu.jpg");
+  //  const filepath = path.join(folderpath, file.name);
+    var arrayURL = [];
     bucket.getFiles().then((result)=>{
-      //console.log("then entered");
-      //for (var i in result) {
-    //    console.log("for loop entered");
-    //    console.log(result[i].name);
-    //    files.name[i] = result[i].name;
-    //    console.log(files);
-  //    }
-  //    console.log("for loop exited");
-      console.log(result);
-      res.send(result);
+        const dataArray = result[0];
+        console.log(dataArray);
+
+        var itemsProcessed = 0;
+
+        dataArray.forEach((item, index, array)=>{
+          getFBMetadata(item).then((rezult)=>{
+            console.log("url/name to be pushed: "+rezult);
+            arrayURL.push(rezult);
+            console.log("array: "+arrayURL);
+            itemsProcessed++;
+            if(itemsProcessed === array.length) {
+              res.send(arrayURL);
+            }
+          });
+        });
+
+      /*for (var i in dataArray){
+        console.log("iteration "+i);
+        console.log("result number "+i+" "+JSON.stringify(dataArray[i]));
+
+        getFBMetadata(dataArray[i]).then((rezult)=>{
+          console.log("url to be pushed: "+rezult);
+          arrayURL.push(rezult);
+          console.log("array: "+arrayURL);
+        });
+
+      //  console.log(JSON.stringify(result[0][i].getMetadata()));
+      }*/
+      //res.send(dataArray[0].metadata.firebaseStorageDownloadTokens); //u haven't fetched the metadata yet!! this is undefined
     });
 
+  /*  file.getMetadata().then((result)=>{
+        const data = result[0];
+        console.log("RESULT METADATA: "+result);
+        console.log("RESULT DATA: "+JSON.stringify(data));
+        console.log("sending over this shit:" + data.metadata.firebaseStorageDownloadTokens);
+        res.send(data.metadata.firebaseStorageDownloadTokens);
+      });
+    }); */
 
-  //  console.log('Files:');
-    //files.forEach(file => {
-    //console.log(file.name);
-  //});
+  //  file.download().then(function(data) {
+    //  const contents = data[0];
+    //  console.log("contents of the data[0]:" + contents);
+  //    console.log("contents of the DATA only:" + data);
+//      res.send(data);
+//    });
+
 
   });
 
 });
+
+function getFBMetadata(file){
+
+  return file.getMetadata().then((result)=>{
+    const data = result[0];
+    url = data.metadata.firebaseStorageDownloadTokens;
+    name = encodeURI(data.name);
+    finalform = {url, name};
+    console.log("RESULT DATA: "+JSON.stringify(data));
+    console.log("URL sending over this shit:" + url + " and " + name);
+    return finalform;
+  });
+}
 
 exports.uploadFile = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
