@@ -15,10 +15,10 @@ class PictureGallery extends Component {
         showBullets: true,
         infinite: true,
         showThumbnails: false,
-        showFullscreenButton: true,
-        showGalleryFullscreenButton: true,
-        showPlayButton: true,
-        showGalleryPlayButton: true,
+        showFullscreenButton: false,
+        showGalleryFullscreenButton: false,
+        showPlayButton: false,
+        showGalleryPlayButton: false,
         showNav: true,
         isRTL: false,
         slideDuration: 450,
@@ -32,7 +32,7 @@ class PictureGallery extends Component {
     const images = this.props.firebasePictures;
 
     return (
-      <ImageGallery items={images} />
+      <ImageGallery items={images} showFullscreenButton={false} showGalleryFullscreenButton={false} showPlayButton={false} showGalleryPlayButton={false} />
     );
   }
 
