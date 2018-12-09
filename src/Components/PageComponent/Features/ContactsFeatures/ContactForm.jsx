@@ -39,14 +39,14 @@ class ContactForm extends Component{
           <label> Name: </label>
         </div>
         <div>
-          <input className="form-control" name="nameValue" type="text" value={this.state.nameValue} onChange={this.handleChange} />
+          <input className="form-control" name="nameValue" type="text" required value={this.state.nameValue} onChange={this.handleChange} />
         </div>
         <br />
         <div>
         <label> Enquiry: </label>
         </div>
         <div>
-        <textarea className="form-control" rows="4" cols="50" name="textValue" value={this.state.textValue} onChange={this.handleChange} />
+        <textarea className="form-control" rows="4" cols="50" name="textValue" required value={this.state.textValue} onChange={this.handleChange} />
         </div>
         <br/>
         <input className="btn btn-success" type="submit" value="Submit" />

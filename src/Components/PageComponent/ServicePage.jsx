@@ -7,7 +7,8 @@ class ServicePage extends Component {
     return (
       <div className="Service">
         <div className="lander">
-        <h1>Services</h1>
+        <h1>Tjänster</h1>
+        <p>Beskrivning av de tjänster företaget erbjuder </p>
           <ServiceTable />
         </div>
       </div>

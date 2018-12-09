@@ -9,7 +9,7 @@ class ContactsPage extends Component {
     return (
       <div className="Contacts">
         <div className="lander" style={{width:'auto', height:'auto'}}>
-          <h1>ContactsPage</h1>
+          <h1>Kontakt</h1>
           <p>Kontaktuppgifter med ett kontaktformulär och en karta med Jannes kontor utpekad</p>
           <ContactForm />
           <br/>

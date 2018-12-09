@@ -13,14 +13,15 @@ class Header extends Component {
             <Navbar fluid collapseOnSelect>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <Link to="/">Jannes Website</Link>
+                  <Link to="/">Jannes Inredning AB</Link>
                 </Navbar.Brand>
               </Navbar.Header>
                 <Nav pullRight bsStyle="pills">
-                  <NavItem className="nItem" href="/">Home</NavItem>
-                  <NavItem className="nItem" href="/contacts">Contacts</NavItem>
+                  <NavItem className="nItem" href="/">Start</NavItem>
+                  <NavItem className="nItem" href="/service">Tjänster</NavItem>
                   <NavItem className="nItem" href="/portfolio">Portfolio</NavItem>
-                  <NavItem className="nItem" href="/service">Service</NavItem>
+                  <NavItem className="nItem" href="/contacts">Kontakt</NavItem>
+
                 </Nav>
             </Navbar>
           <Routes />
