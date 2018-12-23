@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
-import Popup from "reactjs-popup";
 import "./Modal.css";
 import AddService from "./AddService";
 const axios = require('axios');
@@ -108,7 +107,7 @@ class ServiceTable extends Component {
               //  Cell: this.renderEditable
               },
               {
-                Header: 'Price',
+                Header: 'Price (SEK)',
                 accessor: "price",
                 minWidth: 50,
               //  Cell: this.renderEditable
@@ -116,6 +115,7 @@ class ServiceTable extends Component {
               {
                 Header: 'Actions',
                 minWidth: 60,
+                sortable: false,
                 Cell: props => (
                   <div>
                     <button className="btn btn-danger" onClick={()=>this.deleteRow(props.original.id)} > Delete </button>
@@ -125,7 +125,7 @@ class ServiceTable extends Component {
             ]}
             defaultPageSize={5}
             className="-striped -highlight"
-
+            noDataText="No Services Found"
           />
         </div>
       </React.Fragment>

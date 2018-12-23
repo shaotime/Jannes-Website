@@ -66,7 +66,7 @@ class PictureUploader extends Component {
     }
 
     render() {
-      const { pictures } = this.state.pictures;
+      
         return (
           <React.Fragment>
             <PictureGallery firebasePictures={this.state.firebasePictures} />

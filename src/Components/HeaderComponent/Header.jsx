@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./Header.css";
-import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { BrowserRouter as Router, Link} from 'react-router-dom';
 import Routes from "../Routes";
 
 class Header extends Component {
@@ -18,9 +18,9 @@ class Header extends Component {
               </Navbar.Header>
                 <Nav pullRight bsStyle="pills">
                   <NavItem className="nItem" href="/">Start</NavItem>
-                  <NavItem className="nItem" href="/service">Tjänster</NavItem>
+                  <NavItem className="nItem" href="/service">Tjänster/Services</NavItem>
                   <NavItem className="nItem" href="/portfolio">Portfolio</NavItem>
-                  <NavItem className="nItem" href="/contacts">Kontakt</NavItem>
+                  <NavItem className="nItem" href="/contacts">Kontakt/Contact</NavItem>
 
                 </Nav>
             </Navbar>

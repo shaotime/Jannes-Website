@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import "./EditableDescription.css";
+import "./EditableInformation.css";
 const axios = require('axios');
 
-class EditableDescription extends Component {
+class EditableInformation extends Component {
   constructor(props){
     super(props);
     this.state = {
       mode: 'view',
-      html: "Type your description here",
+      html: "Type your information here",
       value: "",
       disabled: true
     };
@@ -15,7 +15,7 @@ class EditableDescription extends Component {
     this.saveStuff = this.saveStuff.bind(this);
     this.goBack = this.goBack.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.getDescription = this.getDescription.bind(this);
+    this.getInformation = this.getInformation.bind(this);
   }
 
   editStuff(){
@@ -24,12 +24,12 @@ class EditableDescription extends Component {
       mode: 'edit',
       disabled: false
     });
-    document.getElementById('description').style.border = '1px dashed #aaa';
+    document.getElementById('information').style.border = '1px dashed #aaa';
 
   }
 
   componentDidMount(){
-      this.getDescription();
+      this.getInformation();
   }
 
   saveStuff(){
@@ -37,13 +37,13 @@ class EditableDescription extends Component {
       mode: 'view',
       disabled: true
     });
-    document.getElementById('description').style.border = '2px solid #aaa';
+    document.getElementById('information').style.border = '2px solid #aaa';
 
-    axios.post('/addDescription', {
+    axios.post('/addInfo', {
       value: this.state.value
     })
     .then( (response) => {
-      console.log('response from add description is ',response);
+      console.log('response from add information is ',response);
     })
     .catch( (error) => {
       console.log(error);
@@ -66,14 +66,14 @@ class EditableDescription extends Component {
      });
   }
 
-  getDescription(){
+  getInformation(){
     let self = this;
-    axios.get('/getDescription')
+    axios.get('/getInfo')
     .then((response) => {
-      console.log("DESCRIPTION: " + self.state.value);
+      console.log("INFO: " + self.state.value);
       console.log("RESPONSE:", response.data[0]);
       self.setState({value:response.data[0].value});
-      console.log("DESCRIPTION: " + self.state.value);
+      console.log("INFO: " + self.state.value);
     })
     .catch((error) => {
       console.log('error is ',error);
@@ -102,9 +102,9 @@ renderButtons() {
       return (
           <div>
               <div>
-                  <h3>Below you can edit and save your description!</h3>
+                  <h3>Information:</h3>
                       <div className="editableContainer">
-                        <textarea id="description" className="editable"  //textarea was previously ContentEditable, box looks weird though when too many words in it
+                        <textarea id="information" className="editable"  //textarea was previously ContentEditable, box looks weird though when too many words in it
                                           //html={this.state.html} <--part of ContextEditable component
                                           placeholder="Press the Edit button below to edit text"
                                           value={this.state.value} //part of textarea component
@@ -119,4 +119,4 @@ renderButtons() {
   }
 }
 
-export default EditableDescription;
+export default EditableInformation;

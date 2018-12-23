@@ -52,14 +52,14 @@ class AddPost extends Component {
         <div className="header"> Add New Post </div>
         <div className="content">
           <div className="form-area">
-              <form role="form" onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit}>
               <br styles="clear:both" />
                 <div className="form-group">
                   <input type="text" onChange={this.handleTitleChange} className="form-control" id="title" name="title" placeholder="Title" required />
                 </div>
 
                 <div className="form-group">
-                  <textarea type="textarea" onChange={this.handleSubjectChange} className="form-control" id="subject" placeholder="Subject" maxLength="65535" rows="10"></textarea>
+                  <textarea type="textarea" onChange={this.handleSubjectChange} className="form-control" id="subject" placeholder="Subject" maxLength="65535" rows="10" required></textarea>
                 </div>
 
               <input type="submit" id="submit" name="submit" className="btn btn-primary pull-right" value="Add Post"/>

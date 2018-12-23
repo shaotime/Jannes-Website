@@ -6,10 +6,6 @@ import AddPost from "./AddPost";
 
 class NewsFeed extends Component {
 
-  constructor(props) {
-      super(props);
-    }
-
   render(){
     return (
       <div className="container">
@@ -17,7 +13,7 @@ class NewsFeed extends Component {
         <div className="header clearfix">
           <nav>
           <ul className="nav nav-pills pull-right">
-          <li role="presentation"> <Popup trigger={<button className="btn btn-default"> Add New Item</button>} modal>
+          <li role="presentation"> <Popup trigger={<button className="btn btn-default"> Add New Post</button>} modal>
 
           {close => (
             <div className="moodal">

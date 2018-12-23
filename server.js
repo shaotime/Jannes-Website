@@ -64,6 +64,26 @@ app.get('/getDescription', (req, res) => {
   });
 });
 
+app.post('/addInfo', (req, res) => {
+  const information = {value: req.body.value, id: 1};
+  connection.query('REPLACE INTO info SET ?', information, (error,results) =>{
+    if(error) throw error;
+    res.send(results);
+    console.log("Information added:" + results);
+  });
+
+});
+
+app.get('/getInfo', (req, res) => {
+  connection.query('SELECT * FROM info', (error, results) => {
+    if(error) throw error;
+    res.send(results);
+    console.log("Current Information: " + results);
+  });
+});
+
+
+
 app.post('/addService', (req, res, next) => {
   const service = {id:req.body.id, name:req.body.name, description: req.body.description, price: req.body.price};
   var queryString = 'INSERT IGNORE INTO service SET ?';

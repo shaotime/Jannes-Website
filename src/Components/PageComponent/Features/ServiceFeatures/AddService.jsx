@@ -54,14 +54,14 @@ class AddService extends Component {
 render(){
   return(
     <React.Fragment>
-    <Popup trigger={<button className="btn btn-default pull-right"> Add New Item</button>} modal>
+    <Popup trigger={<button className="btn btn-default pull-right"> Add New Service</button>} modal>
 
         {close => (
       <div className="moodal">
         <a className="close" onClick={close}>
           &times;
         </a>
-        <div className="header"> Add New Item </div>
+        <div className="header"> Add New Service </div>
         <div className="content">
           <div className="row">
             <div className="col-md-12">
@@ -77,7 +77,7 @@ render(){
                     <input id="description" type="text" onChange={this.handleDescriptionChange} className="form-control" placeholder="Description" required />
                   </div>
                   <div className="col-md-2">
-                    <input id="price" type="text" onChange={this.handlePriceChange} className="form-control" placeholder="Price" required />
+                    <input id="price" type="number" min="0" onChange={this.handlePriceChange} className="form-control" placeholder="Price" required />
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ render(){
           </div>
         </div>
         <div className="actions">
-          <button style={{margin:"4px"}} className="btn btn-default" onClick={this.addService} > Trigger </button>
+          <button style={{margin:"4px"}} className="btn btn-default" onClick={this.addService} > Add </button>
           <button
             className="btn btn-default"
             style={{margin:"4px"}}
@@ -94,7 +94,7 @@ render(){
               close()
             }}
           >
-            Close Modal
+            Cancel
           </button>
         </div>
       </div>
